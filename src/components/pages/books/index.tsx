@@ -9,13 +9,10 @@ const BOOKS_QUERY = gql`
     books(first: 10) {
       _id
       title
-      description
+      shortDescription
       author {
         firstName
-        bio
-      }
-      reviews {
-        title
+        lastName
       }
     }
   }

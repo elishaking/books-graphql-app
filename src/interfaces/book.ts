@@ -18,6 +18,7 @@ export interface IBook {
   _id: string;
   title: string;
   description: string;
+  shortDescription: string;
   author: IAuthor;
   reviews: IReview[];
 }
