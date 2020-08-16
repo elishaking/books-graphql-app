@@ -1,0 +1,19 @@
+.btn {
+  background-color: #2e302d;
+  color: #fff;
+  padding: 1em 2em;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 2em;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #707068;
+  }
+
+  &:active {
+    background-color: #2e302d;
+  }
+}
