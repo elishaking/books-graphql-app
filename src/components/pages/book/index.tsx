@@ -4,6 +4,7 @@ import { gql, useQuery } from "@apollo/client";
 
 import "./book.scss";
 import { IBook } from "../../../interfaces";
+import { Reviews } from "../../organisms";
 
 export const BookPage = (
   props: RouteComponentProps<{}, {}, { id: string }>
@@ -59,13 +60,7 @@ export const BookPage = (
       <p>{book.author.bio}</p>
 
       <h3>Reviews</h3>
-      {book.reviews.map((review) => {
-        return (
-          <div>
-            <h4>{review.reviewerName}</h4>
-          </div>
-        );
-      })}
+      <Reviews reviews={book.reviews} />
     </div>
   );
 };
