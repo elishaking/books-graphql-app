@@ -2,6 +2,7 @@ import React from "react";
 import { gql, useQuery } from "@apollo/client";
 
 import { IBook } from "../../../interfaces";
+import { Books } from "../../organisms";
 
 const BOOKS_QUERY = gql`
   query BooksQuery {
@@ -26,18 +27,10 @@ export const BooksPage = () => {
   if (error) return <p>Error</p>;
   if (!data || data.books.length === 0) return <p>No Books</p>;
 
-  console.log(data);
-
   return (
     <div>
       <h1>Books</h1>
-      {data.books.map((book) => {
-        return (
-          <div key={book._id}>
-            <h1>{book.title}</h1>
-          </div>
-        );
-      })}
+      <Books books={data.books} />
     </div>
   );
 };

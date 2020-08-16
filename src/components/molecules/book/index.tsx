@@ -9,10 +9,10 @@ interface TProps {
 
 export const Book = ({ book }: TProps) => {
   return (
-    <div className="book">
+    <li className="book">
       <h3>{book.title}</h3>
       <p>{book.description}</p>
       <button>More</button>
-    </div>
+    </li>
   );
 };
