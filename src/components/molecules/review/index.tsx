@@ -14,7 +14,12 @@ export const Review = ({ review }: TProps) => {
         {review.title} &middot; <small>{review.reviewerName}</small>
       </h4>
       <p>{review.message}</p>
-      <h2>{review.rating}</h2>
+      <h2>
+        <span role="img" aria-label="star-icon">
+          🌟
+        </span>{" "}
+        {review.rating}
+      </h2>
     </li>
   );
 };
