@@ -6,33 +6,36 @@ import "./book.scss";
 import { IBook } from "../../../interfaces";
 import { Reviews } from "../../organisms";
 
+const BOOK_QUERY = gql`
+  query BookQuery($id: String!) {
+    book(id: $id) {
+      _id
+      title
+      description
+      author {
+        firstName
+        lastName
+        dateOfBirth
+        bio
+      }
+      reviews {
+        reviewerName
+        title
+        message
+        rating
+      }
+    }
+  }
+`;
+
 export const BookPage = (
   props: RouteComponentProps<{}, {}, { id: string }>
 ) => {
   const bookId = props.history.location.state.id;
-  const BOOK_QUERY = gql`
-    query BookQuery {
-      book(id: "${bookId}") {
-        _id
-        title
-        description
-        author {
-          firstName
-          lastName
-          dateOfBirth
-          bio
-        }
-        reviews {
-          reviewerName
-          title
-          message
-          rating
-        }
-      }
-    }
-  `;
 
-  const { loading, error, data } = useQuery<{ book: IBook }>(BOOK_QUERY);
+  const { loading, error, data } = useQuery<{ book: IBook }>(BOOK_QUERY, {
+    variables: { id: bookId },
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
